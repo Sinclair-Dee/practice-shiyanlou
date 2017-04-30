@@ -1,0 +1,154 @@
+<html>
+<head>
+  <title>Evernote Export</title>
+  <basefont face="微软雅黑" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="Evernote Windows/304720 (zh-CN, MWS); Windows/10.0.14393 (Win64);"/>
+  <style>
+    body, td {
+      font-family: 微软雅黑;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name="6334"/>
+
+<div><span><div style="-evernote-webclip:true"><br/><div style="font-size: 16px; display: inline-block;"><div style="box-sizing:border-box;font-family:sans-serif;text-size-adjust:100%;font-size:10px;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);"><div style="box-sizing:border-box;font-family:-apple-system, &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;font-size:14px;line-height:1.42857;color:rgb(51, 51, 51);background:rgb(249, 249, 249);background-color:rgb(237, 239, 240);"><div style="box-sizing:border-box;"><div style="box-sizing:border-box;"><div style="box-sizing:border-box;"><div style="box-sizing:border-box;text-size-adjust:100%;color:rgb(51, 51, 51);font-size:16px;line-height:1.6;word-wrap:break-word;background:rgb(255, 255, 255);"><span style="color:rgb(51, 51, 51);font-size:16px;line-height:1.6;display:table;"></span><h1 style="line-height:1.2;font-size:2.25em;box-sizing:border-box;font-family:inherit;font-weight:700;margin:0.67em 0px;color:inherit;padding-bottom:0.3em;margin-bottom:16px;border-bottom:1px solid rgb(238, 238, 238);margin-top:0px;">Python 图片转字符画</h1>
+<h2 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.225;margin-top:1em;margin-bottom:16px;font-size:1.75em;padding-bottom:0.3em;border-bottom:1px solid rgb(238, 238, 238);">一、实验介绍</h2>
+<h3 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.43;margin-top:1em;margin-bottom:16px;font-size:1.5em;">1.1 实验简介</h3>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">本实验用 50 行 Python 代码完成图片转字符画小工具。通过本实验将学习到 Linux 命令行操作，Python 基础，pillow 库的使用，argparse 库的使用。</p>
+<h3 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.43;margin-top:1em;margin-bottom:16px;font-size:1.5em;">1.2 实验知识点</h3>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">本节实验中我们将实践以下知识：</p>
+<ol style="box-sizing:border-box;margin-top:0px;margin-bottom:16px;padding-left:2em;">
+<li style="box-sizing:border-box;font-size:15px;font-weight:100;">Linux 命令行操作</li>
+<li style="box-sizing:border-box;font-size:15px;font-weight:100;">Python 基础</li>
+<li style="box-sizing:border-box;font-size:15px;font-weight:100;">pillow 库的使用</li>
+<li style="box-sizing:border-box;font-size:15px;font-weight:100;">argparse 库的使用（<a href="http://blog.ixxoo.me/argparse.html" style="box-sizing:border-box;background-color:transparent;color:rgb(64, 120, 192);text-decoration:none;" target="_blank">参考教程</a>）</li>
+</ol>
+<h3 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.43;margin-top:1em;margin-bottom:16px;font-size:1.5em;">1.3 实验环境</h3>
+<ul style="box-sizing:border-box;margin-top:0px;margin-bottom:16px;padding-left:2em;">
+<li style="box-sizing:border-box;font-size:15px;font-weight:100;">python2.7   </li>
+<li style="box-sizing:border-box;font-size:15px;font-weight:100;">Xfce终端</li>
+</ul>
+<h3 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.43;margin-top:1em;margin-bottom:16px;font-size:1.5em;">1.4 适合人群</h3>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">本课程难度简单，属于 Python 基础课程。 </p>
+<h3 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.43;margin-top:1em;margin-bottom:16px;font-size:1.5em;">1.5 代码获取</h3>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">你可以通过下面命令将代码下载到实验楼环境中，作为参照对比进行学习。</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);">$ wget http://labfile.oss.aliyuncs.com/courses/370/ascii.py
+</code></pre>
+<h2 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.225;margin-top:1em;margin-bottom:16px;font-size:1.75em;padding-bottom:0.3em;border-bottom:1px solid rgb(238, 238, 238);">二、实验原理</h2>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">字符画是一系列字符的组合，我们可以把字符看作是比较大块的像素，一个字符能表现一种颜色（暂且这么理解吧），字符的种类越多，可以表现的颜色也越多，图片也会更有层次感。</p>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">问题来了，我们是要转换一张彩色的图片，这么这么多的颜色，要怎么对应到单色的字符画上去？这里就要介绍灰度值的概念了。</p>
+<blockquote style="box-sizing:border-box;padding:0px 15px;margin:0px;border-left:4px solid rgb(221, 221, 221);margin-top:0px;margin-bottom:16px;color:rgb(119, 119, 119);font-size:15px;font-weight:100;">
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-bottom:0px;margin-top:0px;font-size:15px;font-weight:100;line-height:1.6em;">灰度值：指黑白图像中点的颜色深度，范围一般从0到255，白色为255，黑色为0，故黑白图片也称灰度图像</p>
+</blockquote>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">我们可以使用灰度值公式将像素的 RGB 值映射到灰度值：</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);">gray ＝ <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.2126</span> * r + <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.7152</span> * g + <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.0722</span> * b
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">这样就好办了，我们可以创建一个不重复的字符列表，灰度值小（暗）的用列表开头的符号，灰度值大（亮）的用列表末尾的符号。</p>
+<h2 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.225;margin-top:1em;margin-bottom:16px;font-size:1.75em;padding-bottom:0.3em;border-bottom:1px solid rgb(238, 238, 238);">三、开发准备</h2>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">PIL 是一个 Python 图像处理库，是本课程使用的重要工具，安装 pillow（PIL）库：</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);">$ sudo apt-get update
+$ sudo apt-get install python-dev
+$ sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev \
+libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+$ sudo pip install pillow
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">首先获取实验用图片</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);">$ wget http://labfile.oss.aliyuncs.com/courses/370/ascii_dora.png
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;"><img src="Python 图片转字符画 - 实验楼_files/wm.png" type="image/png" alt="此处输入图片的描述" height="153" style="border:0px;vertical-align:middle;box-sizing:content-box;border-style:none;max-width:100%;background-color:rgb(255, 255, 255);" width="153"/></p>
+<h2 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.225;margin-top:1em;margin-bottom:16px;font-size:1.75em;padding-bottom:0.3em;border-bottom:1px solid rgb(238, 238, 238);">四、项目文件结构</h2>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;"><img src="Python 图片转字符画 - 实验楼_files/wm [1].png" type="image/png" alt="此处输入图片的描述" height="180" style="border:0px;vertical-align:middle;box-sizing:content-box;border-style:none;max-width:100%;background-color:rgb(255, 255, 255);" width="654"/></p>
+<h2 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.225;margin-top:1em;margin-bottom:16px;font-size:1.75em;padding-bottom:0.3em;border-bottom:1px solid rgb(238, 238, 238);">五、实验步骤</h2>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">创建 ascii.py 文件进行编辑</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);">$ vi ascii.py
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">首先导入必要的库，argparse 库是用来管理命令行参数输入的</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);"><span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">from</span> PIL <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">import</span> Image
+<span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">import</span> argparse
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">下面是我们的字符画所使用的字符集，一共有 70 个字符，字符的种类与数量可以自己根据字符画的效果反复调试</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);">ascii_char = list(<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`'. &quot;</span>)
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">下面是RGB值转字符的函数：</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);"><span style="box-sizing:border-box;font-size:15px;font-weight:100;"><span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">def</span> <span style="box-sizing:border-box;color:rgb(166, 226, 46);font-size:15px;font-weight:100;">get_char</span><span style="box-sizing:border-box;color:rgb(248, 248, 242);font-size:15px;font-weight:100;">(r,g,b,alpha = <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">256</span>)</span>:</span>
+    <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">if</span> alpha == <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0</span>:
+        <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">return</span> <span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">' '</span>
+    length = len(ascii_char)
+    gray = int(<span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.2126</span> * r + <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.7152</span> * g + <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.0722</span> * b)
+
+    unit = (<span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">256.0</span> + <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">1</span>)/length
+    <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">return</span> ascii_char[int(gray/unit)]
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">完整参考代码：</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);"><span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">from</span> PIL <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">import</span> Image
+<span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">import</span> argparse
+
+<span style="box-sizing:border-box;color:rgb(117, 113, 94);font-size:15px;font-weight:100;">#命令行输入参数处理</span>
+parser = argparse.ArgumentParser()
+
+parser.add_argument(<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'file'</span>)     <span style="box-sizing:border-box;color:rgb(117, 113, 94);font-size:15px;font-weight:100;">#输入文件</span>
+parser.add_argument(<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'-o'</span>, <span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'--output'</span>)   <span style="box-sizing:border-box;color:rgb(117, 113, 94);font-size:15px;font-weight:100;">#输出文件</span>
+parser.add_argument(<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'--width'</span>, type = int, default = <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">80</span>) <span style="box-sizing:border-box;color:rgb(117, 113, 94);font-size:15px;font-weight:100;">#输出字符画宽</span>
+parser.add_argument(<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'--height'</span>, type = int, default = <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">80</span>) <span style="box-sizing:border-box;color:rgb(117, 113, 94);font-size:15px;font-weight:100;">#输出字符画高</span>
+
+<span style="box-sizing:border-box;color:rgb(117, 113, 94);font-size:15px;font-weight:100;">#获取参数</span>
+args = parser.parse_args()
+
+IMG = args.file
+WIDTH = args.width
+HEIGHT = args.height
+OUTPUT = args.output
+
+ascii_char = list(<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`'. &quot;</span>)
+
+<span style="box-sizing:border-box;color:rgb(117, 113, 94);font-size:15px;font-weight:100;"># 将256灰度映射到70个字符上</span>
+<span style="box-sizing:border-box;font-size:15px;font-weight:100;"><span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">def</span> <span style="box-sizing:border-box;color:rgb(166, 226, 46);font-size:15px;font-weight:100;">get_char</span><span style="box-sizing:border-box;color:rgb(248, 248, 242);font-size:15px;font-weight:100;">(r,g,b,alpha = <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">256</span>)</span>:</span>
+    <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">if</span> alpha == <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0</span>:
+        <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">return</span> <span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">' '</span>
+    length = len(ascii_char)
+    gray = int(<span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.2126</span> * r + <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.7152</span> * g + <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">0.0722</span> * b)
+
+    unit = (<span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">256.0</span> + <span style="box-sizing:border-box;color:rgb(174, 129, 255);font-size:15px;font-weight:100;">1</span>)/length
+    <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">return</span> ascii_char[int(gray/unit)]
+
+<span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">if</span> __name__ == <span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'__main__'</span>:
+
+    im = Image.open(IMG)
+    im = im.resize((WIDTH,HEIGHT), Image.NEAREST)
+
+    txt = <span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">&quot;&quot;</span>
+
+    <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">for</span> i <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">in</span> range(HEIGHT):
+        <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">for</span> j <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">in</span> range(WIDTH):
+            txt += get_char(*im.getpixel((j,i)))
+        txt += <span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'\n'</span>
+
+    <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">print</span> txt
+
+    <span style="box-sizing:border-box;color:rgb(117, 113, 94);font-size:15px;font-weight:100;">#字符画输出到文件</span>
+    <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">if</span> OUTPUT:
+        <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">with</span> open(OUTPUT,<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'w'</span>) <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">as</span> f:
+            f.write(txt)
+    <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">else</span>:
+        <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">with</span> open(<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">&quot;output.txt&quot;</span>,<span style="box-sizing:border-box;color:rgb(230, 219, 116);font-size:15px;font-weight:100;">'w'</span>) <span style="box-sizing:border-box;color:rgb(249, 38, 114);font-size:15px;font-weight:100;">as</span> f:
+            f.write(txt)
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">输入以下命令运行脚本查看实验效果</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border:1px solid rgb(204, 204, 204);display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border-radius:4px;box-sizing:border-box;"><code style="border-radius:0px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;white-space:pre-wrap;box-sizing:border-box;padding:0.5em;color:rgb(248, 248, 242);display:block;overflow-x:auto;background:rgb(35, 36, 31);">$ python ascii.py ascii_dora.png
+</code></pre>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;"><img src="Python 图片转字符画 - 实验楼_files/10.png" type="image/png" alt="此处输入图片的描述" height="434" style="border:0px;vertical-align:middle;box-sizing:content-box;border-style:none;max-width:100%;background-color:rgb(255, 255, 255);" width="826"/></p>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;"><strong style="box-sizing:border-box;font-weight:700;">注意，不同的环境中显示的效果可能不尽相同</strong></p>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;"><strong style="box-sizing:border-box;font-weight:700;">终端显示的字体是不是等宽字体，终端显示的行高和行宽，输入输出的图像宽高等等，这些都会影响显示效果</strong></p>
+<h2 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.225;margin-top:1em;margin-bottom:16px;font-size:1.75em;padding-bottom:0.3em;border-bottom:1px solid rgb(238, 238, 238);">六、实验总结</h2>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">我们通过这个简单的实验巩固了 Python 基础知识，希望大家在学习的过程中碰到不太熟悉的函数也要去尝试搜索理解，这样才能在实验中获得提升。</p>
+<h2 style="font-family:inherit;color:inherit;box-sizing:border-box;font-weight:700;line-height:1.225;margin-top:1em;margin-bottom:16px;font-size:1.75em;padding-bottom:0.3em;border-bottom:1px solid rgb(238, 238, 238);">七、课后习题</h2>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">尝试着把这张小羊变成一幅字符画</p>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;"><img src="Python 图片转字符画 - 实验楼_files/wm [2].png" type="image/png" alt="此处输入图片的描述" height="731" style="border:0px;vertical-align:middle;box-sizing:content-box;border-style:none;max-width:100%;background-color:rgb(255, 255, 255);" width="800"/></p>
+<p style="margin:0px 0px 10px;box-sizing:border-box;margin-top:0px;margin-bottom:16px;font-size:15px;font-weight:100;">获取小羊图片的方法</p>
+<pre style="line-height:1.42857;overflow:auto;font-size:13px;border-radius:4px;display:block;padding:9.5px;margin:0px 0px 10px;font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;word-wrap:break-word;color:rgb(51, 51, 51);background-color:rgb(245, 245, 245);border:1px solid rgb(204, 204, 204);box-sizing:border-box;margin-bottom:0px;"><code style="font-family:Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace;word-break:break-all;font-size:inherit;padding:0px;color:inherit;background-color:transparent;border-radius:0px;white-space:pre-wrap;box-sizing:border-box;">$ wget http://labfile.oss.aliyuncs.com/courses/370/test.png
+</code></pre>
+<span style="color:rgb(51, 51, 51);font-size:16px;line-height:1.6;display:table;clear:both;"></span></div></div></div></div></div></div></div><br/></div></span>
+</div></body></html> 
